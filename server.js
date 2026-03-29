@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
@@ -6,22 +7,23 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const morgan = require('morgan');
 const path = require('path');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+
 const connectDB = require('./config/db');
 
 const app = express();
 
-// Connect MongoDB
+// ✅ IMPORTANT: connect DB (serverless safe)
 connectDB();
 
-// View engine
+// View engine (IMPORTANT for Vercel)
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(process.cwd(), 'views'));
 app.use(expressLayouts);
 app.set('layout', 'layouts/main');
 
-
-const helmet = require('helmet');
-
+// Security headers
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -61,50 +63,46 @@ app.use(
   })
 );
 
-// Rate limiting for auth routes
-const rateLimit = require('express-rate-limit');
-
+// Rate limit
 app.use('/auth', rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100
 }));
-
-
 
 // Middleware
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Session (required for connect-flash)
+// ✅ IMPORTANT for Vercel static files
+app.use(express.static(path.join(process.cwd(), 'public')));
+
+// Session
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'secret',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false, maxAge: 7 * 24 * 60 * 60 * 1000 }
+  cookie: {
+    secure: false,
+    maxAge: 7 * 24 * 60 * 60 * 1000
+  }
 }));
 
-// Flash messages
+// Flash
 app.use(flash());
 
-// Global locals - always available in every EJS template
+// Globals
 app.use((req, res, next) => {
   res.locals.user = null;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   res.locals.info = req.flash('info');
-  next();
-});
-
-// Show footer on specific routes
-app.use((req, res, next) => {
   res.locals.showFooter = false;
   next();
 });
 
-// Soft-load logged-in user on every request (overwrites res.locals.user if token valid)
+// Auth middleware
 const { loadUser } = require('./middleware/auth');
 app.use(loadUser);
 
@@ -119,20 +117,12 @@ app.use((req, res) => {
   res.status(404).render('pages/404', { title: '404 - Not Found' });
 });
 
+// API fallback
 app.use('/api', (req, res) => {
   res.status(404).json({ success: false, message: 'API route not found' });
 });
 
-// Global error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).render('pages/error', {
-    title: 'Server Error',
-    message: process.env.NODE_ENV === 'development' ? err.message : null
-  });
-});
-
-
+// Error handler
 app.use((err, req, res, next) => {
   console.error(err);
 
@@ -149,7 +139,5 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`3cols running → http://localhost:${PORT}`);
-});
+// ✅ IMPORTANT: export instead of listen
+module.exports = app;
