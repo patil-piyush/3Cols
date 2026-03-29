@@ -93,3 +93,37 @@ document.addEventListener('DOMContentLoaded', function () {
   window.getAvatarGradient = getAvatarGradient;
 
 });
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // AOS init
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 600,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 60
+    });
+  }
+
+  // Highlight.js init
+  if (typeof hljs !== 'undefined') {
+    document.querySelectorAll('pre code').forEach(function (el) {
+      hljs.highlightElement(el);
+    });
+  }
+
+});
+
+
+$(document).ready(function () {
+  $('#lang-select').select2({
+    placeholder: "Select or search language",
+    width: '100%',
+    dropdownCssClass: "select2-dark",
+    containerCssClass: "select2-dark"
+  });
+});

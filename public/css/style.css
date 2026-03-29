@@ -1828,3 +1828,61 @@ main {
   position: relative;
   z-index: 1;
 }
+
+
+
+/* ============================= */
+/* 🔥 Select2 Dark Theme Fix */
+/* ============================= */
+
+.select2-container--default .select2-selection--single {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  color: var(--text-primary);
+}
+
+.select2-container--default .select2-selection__rendered {
+  color: var(--text-primary);
+  line-height: normal;
+}
+
+.select2-container--default .select2-selection__arrow {
+  height: 100%;
+}
+
+/* Dropdown */
+.select2-dropdown {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+/* Options */
+.select2-results__option {
+  color: var(--text-primary);
+  padding: 10px;
+}
+
+/* Hover */
+.select2-results__option--highlighted {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Search box */
+.select2-search__field {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+/* Focus */
+.select2-container--default.select2-container--focus .select2-selection--single {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}

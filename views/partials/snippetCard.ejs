@@ -1,0 +1,21 @@
+<div class="feature-card">
+
+    <h3 class="feature-title">
+      <a href="/snippet/<%= snippet._id %>">
+        <%= snippet.title %>
+      </a>
+    </h3>
+  
+    <p class="feature-desc">
+      <%= snippet.language %>
+    </p>
+  
+    <div style="margin-top:1rem;">
+      <% if (snippet.tags) { %>
+        <% snippet.tags.slice(0,3).forEach(tag => { %>
+          <span class="badge"><%= tag %></span>
+        <% }) %>
+      <% } %>
+    </div>
+  
+  </div>

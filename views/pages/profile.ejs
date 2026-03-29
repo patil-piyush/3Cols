@@ -1,0 +1,38 @@
+<div class="page-content">
+  <div class="container">
+
+    <div style="text-align:center; margin-bottom:2rem;">
+      <div class="avatar avatar-lg">
+        <%= userProfile.username ? userProfile.username.charAt(0).toUpperCase() : '?' %>
+      </div>
+      <h1>
+        <%= userProfile.username %>
+      </h1>
+    </div>
+
+    <h2 style="margin-bottom:1rem;">Snippets</h2>
+
+    <div class="features-grid">
+      <% if (snippets.length> 0) { %>
+        <% snippets.forEach(snippet=> { %>
+          <%- include('../partials/snippetCard', { snippet }) %>
+            <% }) %>
+              <% } else { %>
+                <p>No snippets yet.</p>
+                <% } %>
+    </div>
+    
+    <h2 style="margin-top:3rem;">Bookmarked Snippets</h2>
+
+    <div class="features-grid">
+      <% if (bookmarked && bookmarked.length> 0) { %>
+        <% bookmarked.forEach(snippet=> { %>
+          <%- include('../partials/snippetCard', { snippet }) %>
+            <% }) %>
+              <% } else { %>
+                <p>No bookmarks yet.</p>
+                <% } %>
+    </div>
+
+  </div>
+</div>

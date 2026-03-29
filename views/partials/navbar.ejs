@@ -3,7 +3,7 @@
 
     <a href="/" class="nav-logo">
       <div class="nav-logo-icon">⌨️</div>
-      <span class="nav-logo-text">Snippet<span>Vault</span></span>
+      <span class="nav-logo-text">3cols</span>
     </a>
 
     <ul class="nav-links" id="nav-links">
@@ -24,7 +24,7 @@
       <% if (typeof user !== 'undefined' && user) { %>
         <a href="/profile/<%= user.username %>" class="avatar-link" title="<%= user.username %>">
           <div class="avatar avatar-sm" data-username="<%= user.username %>">
-            <%= user.username[0].toUpperCase() %>
+            <%= user.username ? user.username.charAt(0).toUpperCase() : '?' %>
           </div>
         </a>
         <a href="/auth/logout" class="btn btn-ghost btn-sm">

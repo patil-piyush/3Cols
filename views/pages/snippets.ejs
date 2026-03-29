@@ -1,0 +1,32 @@
+<div class="page-content">
+    <div class="container">
+  
+      <div class="section-center" style="margin-bottom:2rem;">
+        <h1 class="section-title">Browse Snippets</h1>
+        <p class="section-subtitle">Explore code shared by developers</p>
+      </div>
+  
+      <!-- Search -->
+      <form action="/snippets" method="GET" style="margin-bottom:2rem;">
+        <input 
+          type="text" 
+          name="search" 
+          placeholder="Search snippets..." 
+          class="form-input"
+          value="<%= typeof search !== 'undefined' ? search : '' %>"
+        />
+      </form>
+  
+      <!-- Snippets Grid -->
+      <div class="features-grid">
+        <% if (snippets && snippets.length > 0) { %>
+          <% snippets.forEach(snippet => { %>
+            <%- include('../partials/snippetCard', { snippet }) %>
+          <% }) %>
+        <% } else { %>
+          <p style="text-align:center;">No snippets found.</p>
+        <% } %>
+      </div>
+  
+    </div>
+  </div>
