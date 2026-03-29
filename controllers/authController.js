@@ -17,7 +17,7 @@ const signToken = (id) =>
 
 // ── GET /auth/register ──
 exports.getRegister = (req, res) => {
-  res.render('pages/register', { title: 'Sign Up — 3cols' });
+  res.render('pages/register', { title: 'Sign Up - 3cols' });
 };
 
 // ── POST /auth/register ──
@@ -69,7 +69,7 @@ exports.postRegister = async (req, res) => {
 
 // ── GET /auth/login ──
 exports.getLogin = (req, res) => {
-  res.render('pages/login', { title: 'Log In — 3cols' });
+  res.render('pages/login', { title: 'Log In - 3cols' });
 };
 
 // ── POST /auth/login ──

@@ -5,57 +5,62 @@
       <%= snippet.title %>
     </h1>
 
+    <!-- Author -->
     <p style="color:var(--text-secondary); margin-bottom:1rem;">
-      By <a href="/profile/<%= snippet.author.username %>">
+      By 
+      <a href="/profile/<%= snippet.author.username %>">
         <%= snippet.author.username %>
       </a>
     </p>
 
+    <!-- Code Block -->
     <div class="code-block">
+
       <div class="code-block-header">
-        <span>
-          <%= snippet.language %>
-        </span>
+        <span><%= snippet.lang %></span>
+
+        <!-- Copy Button -->
+        <button class="copy-btn" onclick="copyCode(this)">
+          <i class="fa-regular fa-copy"></i>
+          <span>Copy</span>
+        </button>
       </div>
 
       <pre>
-  <code class="language-<%= snippet.language.toLowerCase() %>">
-  <%= snippet.code %>
-  <div style="margin-top:1.5rem; display:flex; gap:1rem;">
+<code id="snippet-code" class="language-<%= snippet.lang %>"><%= snippet.code %></code>
+      </pre>
 
-    <!-- Like -->
-    <a href="/snippet/like/<%= snippet._id %>" class="btn btn-secondary">
-      ❤️ <%= snippet.likesCount %>
-    </a>
-  
-    <!-- Bookmark -->
-    <a href="/snippet/bookmark/<%= snippet._id %>" class="btn btn-secondary">
-      🔖 Save
-    </a>
-  
-    <% if (user && snippet.author._id.toString() === user._id.toString()) { %>
-      <a href="/snippet/edit/<%= snippet._id %>" class="btn btn-primary">Edit</a>
-      <form action="/snippet/delete/<%= snippet._id %>" method="POST" style="display:inline;">
-        <button class="btn btn-danger">Delete</button>
-      </form>
-    <% } %>
-  
-  </div>
-  </code>
-        </pre>
+    </div>
+
+    <!-- Actions -->
+    <div style="margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+
+      <a href="/snippet/like/<%= snippet._id %>" class="btn btn-secondary">
+        <i class="fa-solid fa-heart"></i> <%= snippet.likesCount %>
+      </a>
+
+      <a href="/snippet/bookmark/<%= snippet._id %>" class="btn btn-secondary">
+        <i class="fa-solid fa-bookmark"></i> Save
+      </a>
+
+      <% if (user && snippet.author._id.toString() === user._id.toString()) { %>
+        <a href="/snippet/edit/<%= snippet._id %>" class="btn btn-primary">Edit</a>
+
+        <form action="/snippet/delete/<%= snippet._id %>" method="POST" style="display:inline;">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      <% } %>
+
     </div>
 
     <!-- Tags -->
     <% if (snippet.tags && snippet.tags.length) { %>
       <div style="margin-top:1rem;">
-        <% snippet.tags.forEach(tag=> { %>
-          <span class="badge">
-            <%= tag %>
-          </span>
-          <% }) %>
+        <% snippet.tags.forEach(tag => { %>
+          <span class="badge"><%= tag %></span>
+        <% }) %>
       </div>
-      <% } %>
-
+    <% } %>
 
   </div>
 </div>

@@ -1,54 +1,85 @@
 <div class="page-content">
-    <div class="container">
-  
-      <h1 class="section-title">Create Snippet</h1>
-  
-      <form action="/snippet/new" method="POST" class="auth-form">
-  
-        <div class="form-group">
-          <label class="form-label">Title</label>
-          <input type="text" name="title" class="form-input" required>
-        </div>
-  
-        <div class="form-group">
-          <label class="form-label">Language</label>
-        
-          <select name="lang" id="lang-select" class="form-input" required>
-            <option value="">Select Language</option>
-        
-            <option value="javascript">JavaScript</option>
-            <option value="python">Python</option>
-            <option value="java">Java</option>
-            <option value="c">C</option>
-            <option value="cpp">C++</option>
-            <option value="csharp">C#</option>
-            <option value="go">Go</option>
-            <option value="rust">Rust</option>
-            <option value="kotlin">Kotlin</option>
-            <option value="swift">Swift</option>
-            <option value="typescript">TypeScript</option>
-            <option value="php">PHP</option>
-            <option value="ruby">Ruby</option>
-            <option value="sql">SQL</option>
-            <option value="bash">Bash</option>
-          </select>
-        </div>
-  
-        <div class="form-group">
-          <label class="form-label">Code</label>
-          <textarea name="code" rows="10" class="form-input" required></textarea>
-        </div>
-  
-        <div class="form-group">
-          <label class="form-label">Tags (comma separated)</label>
-          <input type="text" name="tags" class="form-input">
-        </div>
-  
-        <button type="submit" class="btn btn-primary btn-lg">
-          <i class="fa-solid fa-plus"></i> Save Snippet
-        </button>
-  
-      </form>
-  
-    </div>
+  <div class="container">
+
+    <h1 class="section-title">Create Snippet</h1>
+
+    <form action="/snippet/new" method="POST" class="auth-form">
+
+      <!-- Title -->
+      <div class="form-group">
+        <label class="form-label" for="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          class="form-input"
+          placeholder="Enter snippet title"
+          required
+        >
+      </div>
+
+      <!-- Language -->
+      <div class="form-group">
+        <label class="form-label" for="lang-select">Language</label>
+
+        <select
+          name="lang"
+          id="lang-select"
+          class="form-input"
+          required
+        >
+          <option value="">Select Language</option>
+
+          <option value="javascript">JavaScript</option>
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="c">C</option>
+          <option value="cpp">C++</option>
+          <option value="csharp">C#</option>
+          <option value="go">Go</option>
+          <option value="rust">Rust</option>
+          <option value="kotlin">Kotlin</option>
+          <option value="swift">Swift</option>
+          <option value="typescript">TypeScript</option>
+          <option value="php">PHP</option>
+          <option value="ruby">Ruby</option>
+          <option value="sql">SQL</option>
+          <option value="bash">Bash</option>
+        </select>
+      </div>
+
+      <!-- Code -->
+      <div class="form-group">
+        <label class="form-label" for="code">Code</label>
+        <textarea
+          id="code"
+          name="code"
+          rows="10"
+          class="form-input"
+          placeholder="Paste your code here..."
+          required
+        ></textarea>
+      </div>
+
+      <!-- Tags -->
+      <div class="form-group">
+        <label class="form-label" for="tags">Tags (comma separated)</label>
+        <input
+          type="text"
+          id="tags"
+          name="tags"
+          class="form-input"
+          placeholder="e.g. array, sorting, dp"
+        >
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary btn-lg w-full">
+        <i class="fa-solid fa-plus"></i>
+        Save Snippet
+      </button>
+
+    </form>
+
   </div>
+</div>

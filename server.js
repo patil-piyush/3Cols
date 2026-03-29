@@ -89,12 +89,18 @@ app.use(session({
 // Flash messages
 app.use(flash());
 
-// Global locals — always available in every EJS template
+// Global locals - always available in every EJS template
 app.use((req, res, next) => {
   res.locals.user = null;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   res.locals.info = req.flash('info');
+  next();
+});
+
+// Show footer on specific routes
+app.use((req, res, next) => {
+  res.locals.showFooter = false;
   next();
 });
 
@@ -110,7 +116,7 @@ app.use('/auth', require('./routes/authRoutes'));
 
 // 404
 app.use((req, res) => {
-  res.status(404).render('pages/404', { title: '404 — Not Found' });
+  res.status(404).render('pages/404', { title: '404 - Not Found' });
 });
 
 app.use('/api', (req, res) => {

@@ -122,8 +122,23 @@ document.addEventListener('DOMContentLoaded', function () {
 $(document).ready(function () {
   $('#lang-select').select2({
     placeholder: "Select or search language",
-    width: '100%',
-    dropdownCssClass: "select2-dark",
-    containerCssClass: "select2-dark"
+    width: '100%'
   });
 });
+
+function copyCode(button) {
+  const code = document.getElementById("snippet-code").innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    const span = button.querySelector("span");
+    const icon = button.querySelector("i");
+
+    span.textContent = "Copied!";
+    icon.className = "fa-solid fa-check";
+
+    setTimeout(() => {
+      span.textContent = "Copy";
+      icon.className = "fa-regular fa-copy";
+    }, 1500);
+  });
+}

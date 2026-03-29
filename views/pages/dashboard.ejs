@@ -1,16 +1,104 @@
 <div class="page-content">
-  <div class="container">
-    <div style="padding: 4rem 0; text-align:center;">
-      <div style="font-size:3rem; margin-bottom:1rem;">👋</div>
-      <h1 style="font-size:2rem; font-weight:800; letter-spacing:-.03em; margin-bottom:.5rem;">
-        Welcome, <span class="grad"><%= user.username %></span>
-      </h1>
-      <p style="color:var(--text-secondary); margin-bottom:2rem;">
-        Dashboard is coming in Phase 7. Your account is set up!
-      </p>
-      <a href="/snippets" class="btn btn-primary btn-lg">
-        <i class="fa-solid fa-magnifying-glass"></i> Browse Snippets
-      </a>
+  <div class="container dashboard">
+
+    <!-- Header -->
+    <div class="dashboard-header">
+      <div>
+        <h1>
+          Welcome back, <span class="grad"><%= user.username %></span>
+        </h1>
+        <p>Here’s a quick overview of your activity.</p>
+      </div>
     </div>
+
+    <!-- Stats -->
+    <div class="dashboard-stats">
+
+      <div class="stat-card">
+        <i class="fa-solid fa-cube"></i>
+        <div>
+          <span>Total Snippets</span>
+          <h2><%= totalSnippets %></h2>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <i class="fa-solid fa-heart"></i>
+        <div>
+          <span>Total Likes</span>
+          <h2><%= totalLikes %></h2>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <i class="fa-solid fa-eye"></i>
+        <div>
+          <span>Total Views</span>
+          <h2><%= totalViews %></h2>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <i class="fa-solid fa-bookmark"></i>
+        <div>
+          <span>Bookmarks</span>
+          <h2><%= bookmarks %></h2>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Actions -->
+    <div class="dashboard-section">
+      <h2>Quick Actions</h2>
+
+      <div class="dashboard-actions">
+        <a href="/snippet/new" class="btn btn-primary">
+          <i class="fa-solid fa-plus"></i> New Snippet
+        </a>
+
+        <a href="/snippets" class="btn btn-secondary">
+          <i class="fa-solid fa-search"></i> Browse
+        </a>
+
+        <a href="/profile/<%= user.username %>" class="btn btn-secondary">
+          <i class="fa-solid fa-user"></i> Profile
+        </a>
+      </div>
+    </div>
+
+    <!-- Recent -->
+    <div class="dashboard-section">
+      <h2>Recent Snippets</h2>
+
+      <% if (recentSnippets.length === 0) { %>
+        <div class="empty-state">
+          <i class="fa-solid fa-code"></i>
+          <p>No snippets yet. Start creating!</p>
+        </div>
+      <% } else { %>
+
+        <div class="snippet-list">
+          <% recentSnippets.forEach(snippet => { %>
+            <a href="/snippet/<%= snippet._id %>" class="snippet-row">
+
+              <div class="snippet-info">
+                <h3><%= snippet.title %></h3>
+                <p>
+                  <span><i class="fa-solid fa-code"></i> <%= snippet.lang %></span>
+                  <span><i class="fa-solid fa-heart"></i> <%= snippet.likesCount %></span>
+                  <span><i class="fa-solid fa-eye"></i> <%= snippet.views %></span>
+                </p>
+              </div>
+
+              <span class="badge"><%= snippet.lang %></span>
+
+            </a>
+          <% }) %>
+        </div>
+
+      <% } %>
+    </div>
+
   </div>
 </div>

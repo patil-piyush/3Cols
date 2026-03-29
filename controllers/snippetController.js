@@ -23,7 +23,7 @@ exports.getAllSnippets = catchAsync(async (req, res) => {
       .lean();
 
     res.render('pages/snippets', {
-      title: 'Browse Snippets — 3cols',
+      title: 'Browse Snippets - 3cols',
       snippets,
       search
     });
@@ -66,7 +66,7 @@ exports.getSnippet = catchAsync(async (req, res) => {
 // ── GET create form ──────────────────────────────────────────────
 exports.getCreateSnippet = (req, res) => {
   res.render('pages/snippetForm', {
-    title: 'Create Snippet — 3cols'
+    title: 'Create Snippet - 3cols'
   });
 };
 
@@ -75,8 +75,8 @@ exports.createSnippet = async (req, res) => {
   try {
     const { title, code, lang, tags } = req.body;
 
-
-
+    console.log("REQ BODY:", req.body);
+    console.log("LANG VALUE:", lang, typeof lang);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       req.flash('error', errors.array()[0].msg);
@@ -102,7 +102,7 @@ exports.createSnippet = async (req, res) => {
   } catch (err) {
     console.error(err);
     req.flash('error', 'Failed to create snippet');
-    res.redirect('/snippet/new');
+    res.redirect('/dashboard');
   }
 };
 
@@ -116,11 +116,11 @@ exports.getEditSnippet = async (req, res) => {
 
   if (!snippet || snippet.author.toString() !== req.user._id.toString()) {
     req.flash('error', 'Unauthorized');
-    return res.redirect('/snippets');
+    return res.redirect('/dashboard');
   }
 
   res.render('pages/snippetForm', {
-    title: 'Edit Snippet — 3cols',
+    title: 'Edit Snippet - 3cols',
     snippet
   });
 };
@@ -159,7 +159,7 @@ exports.deleteSnippet = async (req, res) => {
   await snippet.deleteOne();
 
   req.flash('success', 'Snippet deleted');
-  res.redirect('/snippets');
+  res.redirect('/dashboard');
 };
 
 // ── LIKE / UNLIKE ────────────────────────────────────────────────
@@ -209,6 +209,6 @@ exports.toggleBookmark = async (req, res) => {
   } catch (err) {
     console.error(err);
     req.flash('error', 'Something went wrong');
-    res.redirect('/snippets');
+    res.redirect('/dashboard'); 
   }
 };

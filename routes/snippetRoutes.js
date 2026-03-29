@@ -7,7 +7,7 @@ const { body } = require('express-validator');
 const snippetRules = [
   body('title').notEmpty().withMessage('Title required'),
   body('code').notEmpty().withMessage('Code required'),
-  body('language').notEmpty().withMessage('Language required')
+  body('lang').notEmpty().withMessage('Language required') // ✅ FIXED
 ];
 // List
 router.get('/snippets', ctrl.getAllSnippets);
