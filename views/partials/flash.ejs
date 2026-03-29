@@ -1,0 +1,36 @@
+<%
+  // connect-flash always gives arrays — safely extract first message from each
+  const _success = (typeof success !== 'undefined' && Array.isArray(success) && success.length) ? success[0] : null;
+  const _error   = (typeof error   !== 'undefined' && Array.isArray(error)   && error.length)   ? error[0]   : null;
+  const _info    = (typeof info    !== 'undefined' && Array.isArray(info)    && info.length)    ? info[0]    : null;
+%>
+
+<% if (_success || _error || _info) { %>
+<div class="flash-container" id="flash-container">
+
+  <% if (_success) { %>
+    <div class="flash flash-success">
+      <i class="fa-solid fa-circle-check"></i>
+      <span><%= _success %></span>
+      <button class="flash-close" aria-label="Close">&times;</button>
+    </div>
+  <% } %>
+
+  <% if (_error) { %>
+    <div class="flash flash-error">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <span><%= _error %></span>
+      <button class="flash-close" aria-label="Close">&times;</button>
+    </div>
+  <% } %>
+
+  <% if (_info) { %>
+    <div class="flash flash-info">
+      <i class="fa-solid fa-circle-info"></i>
+      <span><%= _info %></span>
+      <button class="flash-close" aria-label="Close">&times;</button>
+    </div>
+  <% } %>
+
+</div>
+<% } %>

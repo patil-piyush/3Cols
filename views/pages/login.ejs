@@ -1,0 +1,121 @@
+<% pageScript = "auth.js" %>
+<div class="auth-page">
+
+  <!-- Left panel — branding -->
+  <div class="auth-panel auth-panel-left">
+    <div class="auth-panel-inner">
+
+      <a href="/" class="auth-logo">
+        <div class="nav-logo-icon">⌨️</div>
+        <span class="nav-logo-text">Snippet<span>Vault</span></span>
+      </a>
+
+      <div class="auth-panel-body">
+        <div class="auth-tagline">
+          <span class="section-label">Welcome back</span>
+          <h2 class="auth-headline">Good to see<br/><span class="grad">you again</span></h2>
+          <p class="auth-panel-sub">Your snippets are waiting. Pick up right where you left off.</p>
+        </div>
+
+        <!-- Testimonial -->
+        <div class="auth-testimonial">
+          <div class="t-stars">★★★★★</div>
+          <p class="auth-quote">"I open SnippetVault before Stack Overflow now. Everything I've ever written is in here."</p>
+          <div class="t-author">
+            <div class="t-avatar" style="background:linear-gradient(135deg,#10d9a0,#059669);">S</div>
+            <div>
+              <div class="t-name">Sara Malik</div>
+              <div class="t-role">Fullstack Developer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="auth-stats">
+          <div class="auth-stat">
+            <div class="auth-stat-num">1k+</div>
+            <div class="auth-stat-label">Developers</div>
+          </div>
+          <div class="auth-stat-divider"></div>
+          <div class="auth-stat">
+            <div class="auth-stat-num">180+</div>
+            <div class="auth-stat-label">Languages</div>
+          </div>
+          <div class="auth-stat-divider"></div>
+          <div class="auth-stat">
+            <div class="auth-stat-num">100%</div>
+            <div class="auth-stat-label">Free</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Right panel — form -->
+  <div class="auth-panel auth-panel-right">
+    <div class="auth-form-wrap">
+
+      <div class="auth-form-header">
+        <h1 class="auth-form-title">Welcome back</h1>
+        <p class="auth-form-sub">No account yet? <a href="/auth/register">Sign up free</a></p>
+      </div>
+
+      <form class="auth-form" action="/auth/login" method="POST" id="login-form" novalidate>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-envelope input-icon"></i>
+            <input
+              class="form-input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input
+              class="form-input"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Your password"
+              autocomplete="current-password"
+              required
+            />
+            <button type="button" class="input-toggle-pw" aria-label="Show password" tabindex="-1">
+              <i class="fa-regular fa-eye" id="pw-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-full btn-lg auth-submit">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          Log In
+          <span class="btn-shimmer"></span>
+        </button>
+
+      </form>
+
+      <div class="auth-divider"><span>or</span></div>
+
+      <p class="auth-switch">
+        Don't have an account?
+        <a href="/auth/register" class="btn btn-secondary w-full" style="margin-top:.75rem; justify-content:center;">
+          <i class="fa-solid fa-user-plus"></i> Create a free account
+        </a>
+      </p>
+
+    </div>
+  </div>
+
+</div>

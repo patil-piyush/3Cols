@@ -1,0 +1,31 @@
+<div class="error-page">
+  <div class="pulse"></div>
+
+  <div class="error-content">
+    <span class="error-label">
+      <i class="fa-solid fa-triangle-exclamation"></i> Server Error
+    </span>
+    <div class="error-code">500</div>
+    <h1 class="error-title">Something went wrong</h1>
+
+    <% if (typeof message !== 'undefined' && message) { %>
+      <div class="error-box">
+        <div class="error-box-header">
+          <i class="fa-solid fa-terminal"></i> Error Details
+        </div>
+        <div class="error-box-msg"><%= message %></div>
+      </div>
+    <% } else { %>
+      <p class="error-sub">An unexpected error occurred. Please try again later.</p>
+    <% } %>
+
+    <div class="error-actions">
+      <a href="/" class="btn btn-primary btn-lg">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+      <a href="javascript:location.reload()" class="btn btn-secondary btn-lg">
+        <i class="fa-solid fa-rotate-right"></i> Try Again
+      </a>
+    </div>
+  </div>
+</div>

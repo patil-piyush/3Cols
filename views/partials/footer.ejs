@@ -1,0 +1,24 @@
+<footer class="footer">
+  <div class="footer-inner">
+
+    <a href="/" class="footer-brand">
+      <div class="nav-logo-icon" style="width:28px;height:28px;font-size:13px;">⌨️</div>
+      <span class="footer-brand-text">SnippetVault</span>
+    </a>
+
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/snippets">Browse</a></li>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/snippet/new">New Snippet</a></li>
+      <% } else { %>
+        <li><a href="/auth/login">Login</a></li>
+        <li><a href="/auth/register">Sign Up</a></li>
+      <% } %>
+    </ul>
+
+    <p class="footer-copy">Built with ❤️ using Node.js &amp; MongoDB</p>
+
+  </div>
+</footer>

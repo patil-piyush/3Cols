@@ -1,0 +1,191 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge" data-aos="fade-down">
+      <i class="fa-solid fa-bolt"></i> Now with 180+ language support
+    </div>
+
+    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+      Your Personal<br/><span class="grad">Code Library</span>
+    </h1>
+
+    <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">
+      Save, organize, and share code snippets with syntax highlighting.
+      Find any piece of code in milliseconds — not buried in Slack or some random file.
+    </p>
+
+    <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
+      <a href="/auth/register" class="btn btn-primary btn-xl">
+        <i class="fa-solid fa-rocket"></i> Get Started — Free
+      </a>
+      <a href="/snippets" class="btn btn-secondary btn-xl">
+        <i class="fa-solid fa-magnifying-glass"></i> Browse Snippets
+      </a>
+    </div>
+
+    <div class="hero-code" data-aos="fade-up" data-aos-delay="400">
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-block-dots">
+            <div class="code-block-dot"></div>
+            <div class="code-block-dot"></div>
+            <div class="code-block-dot"></div>
+          </div>
+          <span class="code-block-lang">javascript</span>
+        </div>
+        <pre><code class="language-javascript">// Debounce utility — saved to SnippetVault ✓
+const debounce = (fn, delay = 300) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  };
+};
+
+// Usage
+const handleSearch = debounce((query) => {
+  fetchResults(query);
+}, 400);</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="container">
+    <div class="section-center" data-aos="fade-up">
+      <span class="section-label">Why Snippet Vault</span>
+      <h2 class="section-title">Everything a developer needs</h2>
+      <p class="section-subtitle">Stop copy-pasting from old projects. Stop scrolling through Slack. Your code, organized, searchable, always there.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <span class="feature-icon">🔍</span>
+        <div class="feature-title">Instant Search</div>
+        <div class="feature-desc">Full-text search across titles, descriptions and tags. Find any snippet in milliseconds with MongoDB text indexes.</div>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="80">
+        <span class="feature-icon">🎨</span>
+        <div class="feature-title">Syntax Highlighting</div>
+        <div class="feature-desc">180+ languages with beautiful Highlight.js rendering. From JavaScript to Zig — every language looks stunning.</div>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="160">
+        <span class="feature-icon">🔖</span>
+        <div class="feature-title">Bookmarks & Likes</div>
+        <div class="feature-desc">Save snippets from other developers to your personal collection. Like and curate the best code on the platform.</div>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <span class="feature-icon">🏷️</span>
+        <div class="feature-title">Smart Tags</div>
+        <div class="feature-desc">Organize with custom tags. Filter by language, topic, or any combination. Your own taxonomy, your own system.</div>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="80">
+        <span class="feature-icon">🌙</span>
+        <div class="feature-title">Dark / Light Mode</div>
+        <div class="feature-desc">Easy on your eyes at 2AM. Theme switching with localStorage persistence — your preference, always remembered.</div>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="160">
+        <span class="feature-icon">🔒</span>
+        <div class="feature-title">Private Snippets</div>
+        <div class="feature-desc">Keep sensitive code, API patterns, or work-in-progress snippets completely private. You control what's public.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-bar" data-aos="fade-up">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">180+</div>
+        <div class="stat-label">Languages Supported</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Free to Use</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">&lt;1s</div>
+        <div class="stat-label">Search Response Time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-center" data-aos="fade-up">
+      <span class="section-label">How it works</span>
+      <h2 class="section-title">Up and running in 60 seconds</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step" data-aos="fade-up" data-aos-delay="0">
+        <div class="step-num">1</div>
+        <div class="step-title">Create an account</div>
+        <div class="step-desc">Sign up in seconds. No credit card, no nonsense. Just a username and password.</div>
+      </div>
+      <div class="step" data-aos="fade-up" data-aos-delay="100">
+        <div class="step-num">2</div>
+        <div class="step-title">Paste your code</div>
+        <div class="step-desc">Add a title, pick a language, drop in your snippet. Tags are optional but powerful.</div>
+      </div>
+      <div class="step" data-aos="fade-up" data-aos-delay="200">
+        <div class="step-num">3</div>
+        <div class="step-title">Find it instantly</div>
+        <div class="step-desc">Search, filter by language, or browse by tags. Your code is always one search away.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-center" data-aos="fade-up">
+      <span class="section-label">Testimonials</span>
+      <h2 class="section-title">Loved by developers</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"I used to keep a giant Notion doc of snippets. SnippetVault replaced it completely. The syntax highlighting alone is worth it."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:linear-gradient(135deg,#4f8ef7,#7c3aed);">A</div>
+          <div><div class="t-name">Alex Chen</div><div class="t-role">Senior Frontend Engineer</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"The search is insanely fast. I have 300+ snippets and still find exactly what I need instantly. The tag system is brilliant."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:linear-gradient(135deg,#10d9a0,#059669);">S</div>
+          <div><div class="t-name">Sara Malik</div><div class="t-role">Fullstack Developer</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Finally a tool that's just for code snippets. No bloat, no AI features I don't need. Clean, fast, dark mode. Perfect."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:linear-gradient(135deg,#f97316,#ef4444);">J</div>
+          <div><div class="t-name">James O'Brien</div><div class="t-role">Backend Engineer</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" data-aos="fade-up">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-title">Start building your snippet library today</h2>
+      <p class="cta-sub">Free forever. No credit card required. Your code deserves a better home.</p>
+      <a href="/auth/register" class="btn btn-primary btn-xl">
+        <i class="fa-solid fa-rocket"></i> Sign Up Free
+      </a>
+    </div>
+  </div>
+</section>

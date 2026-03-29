@@ -1,0 +1,44 @@
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">⌨️</div>
+      <span class="nav-logo-text">Snippet<span>Vault</span></span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/snippets">Browse</a></li>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/snippet/new" style="color:var(--accent-primary);">+ New</a></li>
+      <% } %>
+    </ul>
+
+    <div class="nav-actions">
+
+      <button class="theme-toggle" id="theme-toggle" aria-label="Switch theme" title="Switch theme">
+        <span class="icon-moon"><i class="fa-solid fa-moon"></i></span>
+        <span class="icon-sun"><i class="fa-solid fa-sun"></i></span>
+      </button>
+
+      <% if (typeof user !== 'undefined' && user) { %>
+        <a href="/profile/<%= user.username %>" class="avatar-link" title="<%= user.username %>">
+          <div class="avatar avatar-sm" data-username="<%= user.username %>">
+            <%= user.username[0].toUpperCase() %>
+          </div>
+        </a>
+        <a href="/auth/logout" class="btn btn-ghost btn-sm">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </a>
+      <% } else { %>
+        <a href="/auth/login" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="/auth/register" class="btn btn-primary btn-sm">Sign up</a>
+      <% } %>
+
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+  </div>
+</nav>
