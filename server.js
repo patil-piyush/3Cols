@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 const morgan = require('morgan');
+const compression = require('compression');
 const path = require('path');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -14,7 +15,7 @@ const connectDB = require('./config/db');
 
 const app = express();
 
-// ✅ IMPORTANT: connect DB (serverless safe)
+//  IMPORTANT: connect DB (serverless safe)
 connectDB();
 
 // View engine (IMPORTANT for Vercel)
@@ -74,8 +75,9 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(compression());
 
-// ✅ IMPORTANT for Vercel static files
+//  IMPORTANT for Vercel static files
 app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Session
@@ -139,5 +141,5 @@ app.use((err, req, res, next) => {
   });
 });
 
-// ✅ IMPORTANT: export instead of listen
+//  IMPORTANT: export instead of listen
 module.exports = app;
