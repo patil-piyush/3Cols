@@ -3,80 +3,52 @@
 
     <h1 class="section-title">Create Snippet</h1>
 
-    <form action="/snippet/new" method="POST" class="auth-form">
+    <form action="<%= snippet ? `/snippet/edit/${snippet._id}` : '/snippet/new' %>" method="POST" class="auth-form">
 
       <!-- Title -->
       <div class="form-group">
         <label class="form-label" for="title">Title</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          class="form-input"
-          placeholder="Enter snippet title"
-          required
-        >
+        <input type="text" id="title" name="title" class="form-input" placeholder="Enter snippet title"
+          value="<%= snippet ? snippet.title : '' %>" required>
       </div>
 
       <!-- Language -->
       <div class="form-group">
         <label class="form-label" for="lang-select">Language</label>
 
-        <select
-          name="lang"
-          id="lang-select"
-          class="form-input"
-          required
-        >
+        <select name="lang" id="lang-select" class="form-input" required>
           <option value="">Select Language</option>
 
-          <option value="javascript">JavaScript</option>
-          <option value="python">Python</option>
-          <option value="java">Java</option>
-          <option value="c">C</option>
-          <option value="cpp">C++</option>
-          <option value="csharp">C#</option>
-          <option value="go">Go</option>
-          <option value="rust">Rust</option>
-          <option value="kotlin">Kotlin</option>
-          <option value="swift">Swift</option>
-          <option value="typescript">TypeScript</option>
-          <option value="php">PHP</option>
-          <option value="ruby">Ruby</option>
-          <option value="sql">SQL</option>
-          <option value="bash">Bash</option>
+          <% const
+            langs=['javascript','python','java','c','cpp','csharp','go','rust','kotlin','swift','typescript','php','ruby','sql','bash'];
+            %>
+
+            <% langs.forEach(l=> { %>
+              <option value="<%= l %>" <%=snippet && snippet.lang===l ? 'selected' : '' %>>
+                <%= l.toUpperCase() %>
+              </option>
+              <% }) %>
         </select>
       </div>
 
       <!-- Code -->
       <div class="form-group">
         <label class="form-label" for="code">Code</label>
-        <textarea
-          id="code"
-          name="code"
-          rows="10"
-          class="form-input"
-          placeholder="Paste your code here..."
-          required
-        ></textarea>
+        <textarea id="code" name="code" rows="10" class="form-input"
+          required><%= snippet ? snippet.code : '' %></textarea>
       </div>
 
       <!-- Tags -->
       <div class="form-group">
         <label class="form-label" for="tags">Tags (comma separated)</label>
-        <input
-          type="text"
-          id="tags"
-          name="tags"
-          class="form-input"
-          placeholder="e.g. array, sorting, dp"
-        >
+        <input type="text" id="tags" name="tags" class="form-input"
+          value="<%= snippet ? snippet.tags.join(', ') : '' %>">
       </div>
 
       <!-- Submit -->
       <button type="submit" class="btn btn-primary btn-lg w-full">
-        <i class="fa-solid fa-plus"></i>
-        Save Snippet
+        <i class="fa-solid <%= snippet ? 'fa-pen' : 'fa-plus' %>"></i>
+        <%= snippet ? 'Update Snippet' : 'Save Snippet' %>
       </button>
 
     </form>
