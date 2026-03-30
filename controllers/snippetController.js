@@ -65,9 +65,14 @@ exports.getSnippet = catchAsync(async (req, res) => {
 
 // ── GET create form ──────────────────────────────────────────────
 exports.getCreateSnippet = (req, res) => {
-  res.render('pages/snippetForm', {
-    title: 'Create Snippet - 3cols'
-  });
+  try {
+    res.render('pages/snippetForm', {
+      title: 'Create Snippet - 3cols'
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('pages/error', { message: error.message });
+  }
 };
 
 // ── POST create snippet ──────────────────────────────────────────
